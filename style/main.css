@@ -1,0 +1,40 @@
+body {
+  background-color: #272b30;
+  font-family: "Comfortaa", sans-serif;
+}
+
+h1 {
+  font-family: cursive;
+}
+
+.header-img {
+  height: 30vh;
+  object-fit: cover;
+}
+
+/* start of navbar section */
+
+.nav {
+  margin: -30px auto 0;
+  background-color: #3a497b;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.7);
+}
+
+.nav-link {
+  color: white;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
+
+.navbar-nav .nav-link.active {
+  color: #09c;
+  transition: color 0.5s;
+}
+.nav-link:hover {
+  color: #09c;
+  transition: color 0.5s;
+}
+/* end of navbar section */
+
+/* start of  */
