@@ -8,7 +8,7 @@ export class HomePage {
     this.activeOnClick();
   }
 
-  //   this function remove/add the active class from the link depend on the the data needed
+  //  this function remove/add the active class from the link depend on the the data needed
   setActiveLink(category) {
     this.navlinksHolder.forEach((link) => {
       if (link.getAttribute("data-bs-name") === category) {
@@ -19,7 +19,7 @@ export class HomePage {
     });
   }
 
-  //   this function get the vlue of the custom att i add so i can change the active class
+  //  this function get the vlue of the custom att i add so i can change the active class
   activeOnClick() {
     this.navlinksHolder.forEach((link) => {
       link.addEventListener("click", (e) => {

@@ -1,10 +1,12 @@
 import { GameDetails } from "./details.module.js";
 
 export class Ui {
+  // constructor function that take id of the row, class of the links and the id of the game details
   constructor(gameCardsHolder, navLinksHolder, detailsHolderSelector) {
     this.gameCardsHolder = document.querySelector(gameCardsHolder);
     this.navLinksHolder = document.querySelectorAll(navLinksHolder);
     this.detailsHolderSelector = detailsHolderSelector;
+    // object of the details class so i can use displayDetails function and take the id of the game details
     this.detailsInstance = new GameDetails(detailsHolderSelector);
 
     this.apiURL =
@@ -15,15 +17,17 @@ export class Ui {
     this.init();
   }
 
+  // function that get the value of the custom att i add to know what is the choosen category by user
   init() {
     this.navLinksHolder.forEach((link) => {
       const customAtt = link.getAttribute("data-bs-name");
       link.addEventListener("click", () => this.getData(customAtt));
     });
-
-    this.getData("mmorpg"); // Load default category
+    // the default value when the user load the page
+    this.getData("mmorpg");
   }
 
+  // function that fetch the data from the api and take a string that string will be the category that user want
   async getData(category) {
     try {
       const res = await fetch(`${this.apiURL}${category}`, {
@@ -34,14 +38,13 @@ export class Ui {
         },
       });
       const data = await res.json();
-      console.log(data);
-
       this.displayGamesData(data);
     } catch (err) {
       console.error("Error fetching data:", err);
     }
   }
 
+  // function take the data from the api and in the end display every game in card
   displayGamesData(data) {
     let box = ``;
     data.forEach((game) => {
@@ -67,10 +70,10 @@ export class Ui {
         </div>
       `;
     });
-
     this.gameCardsHolder.innerHTML = box;
 
     // card event so i when i click on the card the details page appear
+    // and it will be here because if i do it before or in getData function it will equal to null because the card wasn't render at the time we call it
     const gameCards = this.gameCardsHolder.querySelectorAll(".game-card");
     gameCards.forEach((card, index) => {
       card.addEventListener("click", () => {
@@ -79,6 +82,7 @@ export class Ui {
     });
   }
 
+  // function take a string and it will be the describtion and the number of word i want to show in the card
   truncateDescription(description, wordLimit) {
     const words = description.split(" ");
     return words.length > wordLimit

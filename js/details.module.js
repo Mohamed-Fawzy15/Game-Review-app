@@ -1,4 +1,5 @@
 export class GameDetails {
+  // constructor function that take the id of the element i want to show details in it but i take that id from the ui.module.js
   constructor(detailsHolderSelector) {
     this.detailsHolder = document.querySelector(detailsHolderSelector);
   }
@@ -49,21 +50,26 @@ export class GameDetails {
 
     this.detailsHolder.innerHTML = detailsHTML;
 
+    // when the details section appear the scroll bar will be disappear so that the user cant't scroll
     document.body.style.overflow = "hidden";
 
+    // to scroll to the top when the user click on the card and the details section appear
     window.scrollTo({ top: 0, behavior: "instant" });
 
     const closeButton = this.detailsHolder.querySelector(".close-details");
+    // event of the button to the user so that he can close the detials section
     closeButton.addEventListener("click", () => {
       this.closeDetails();
       this.hideDetails();
     });
   }
 
+  // close button to make the details section disappear from the screen
   hideDetails() {
     this.detailsHolder.innerHTML = ""; // Clear the container
   }
 
+  // close function to close the details and make it disappear, and make the user able to scroll again
   closeDetails() {
     this.detailsHolder.innerHTML = "";
 
