@@ -8,7 +8,7 @@ h1 {
 }
 
 .header-img {
-  height: 30vh;
+  max-height: 30vh;
   object-fit: cover;
 }
 
@@ -37,4 +37,40 @@ h1 {
 }
 /* end of navbar section */
 
-/* start of  */
+/* start of  cards section*/
+
+.cards .card {
+  filter: grayscale(0.7);
+  transition: transform 0.5s, filter 0.5s 0.1s;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cards .card:hover {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+.card-title {
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  font-weight: 500;
+}
+.badge-color {
+  background-color: #32383e;
+}
+
+/* end of  cards section*/
+
+/* start of details section */
+
+.details {
+  background-color: #27282b;
+}
+
+.details-color{
+  background-color: #0CCAF0;
+  
+}

@@ -22,6 +22,7 @@
         alt="gaming background image"
       />
     </header>
+
     <nav
       class="nav navbar navbar-expand-lg navbar-dark text-uppercase position-sticky top-0 z-3 col-md-6 col-lg-9"
     >
@@ -44,22 +45,32 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">mmorpg</a>
+              <a
+                class="nav-link active"
+                data-bs-name="mmorpg"
+                aria-current="page"
+                href="#"
+                >mmorpg</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">shooter</a>
+              <a class="nav-link" data-bs-name="shooter" href="#">shooter</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">sailing</a>
+              <a class="nav-link" data-bs-name="sailing" href="#">sailing</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">permadeath</a>
+              <a class="nav-link" data-bs-name="permadeath" href="#"
+                >permadeath</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">superhero</a>
+              <a class="nav-link" data-bs-name="superhero" href="#"
+                >superhero</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">pixel</a>
+              <a class="nav-link" data-bs-name="pixel" href="#">pixel</a>
             </li>
           </ul>
         </div>
@@ -67,28 +78,15 @@
     </nav>
 
     <main>
-      <section class="cards">
+      <section class="cards my-5">
         <div class="container">
-          <div class="row">
-            <div
-              class="card col-12 col-md-6 col-lg-3 rounded border border-opacity-75 border-black bg-danger"
-            >
-              <div class="inner p-2 rounded rounded-5 overflow-hidden">
-                <img src="./imgs/blog1.jpg" alt="game image" class="w-100" />
-                <div class="d-flex justify-content-between">
-                  <p>Tarisland</p>
-                  <span
-                    class="badge text-bg-secondary d-flex align-items-center"
-                    >Free</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="row flex-wrap gy-3" id="gamesData"></div>
         </div>
       </section>
+
+      <section class="detailsHolder"></section>
     </main>
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
