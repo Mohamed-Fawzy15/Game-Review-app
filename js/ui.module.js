@@ -17,7 +17,7 @@ export class Ui {
     this.init();
   }
 
-  // function that get the value of the custom att i add to know what is the choosen category by user
+  // function that get the value of the custom att i add to know what is the chosen category by user
   init() {
     this.navLinksHolder.forEach((link) => {
       const customAtt = link.getAttribute("data-bs-name");
@@ -49,10 +49,8 @@ export class Ui {
     let box = ``;
     data.forEach((game) => {
       box += `
-        <div class="col-12 col-md-6 col-lg-3 h-100 game-card" data-id="${
-          game.id
-        }">
-          <div class="card bg-transparent">
+        <div class="col-12 col-md-6 col-lg-3 game-card" data-id="${game.id}">
+          <div class="card h-100  bg-transparent">
             <div class="card-body rounded rounded-5 overflow-hidden">
               <img src="${game.thumbnail}" alt="${
         game.title
@@ -66,6 +64,10 @@ export class Ui {
                 7
               )}</p>
             </div>
+            <footer class="d-flex justify-content-between align-items-center">
+              <span class="badge badge-color">${game.genre}</span>
+              <span class="badge badge-color">${game.platform}</span>
+            </footer>
           </div>
         </div>
       `;
