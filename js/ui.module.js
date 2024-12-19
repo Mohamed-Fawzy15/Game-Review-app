@@ -2,12 +2,19 @@ import { GameDetails } from "./details.module.js";
 
 export class Ui {
   // constructor function that take id of the row, class of the links and the id of the game details
-  constructor(gameCardsHolder, navLinksHolder, detailsHolderSelector) {
+  constructor(
+    gameCardsHolder,
+    navLinksHolder,
+    detailsHolderSelector,
+    loadingHolder
+  ) {
     this.gameCardsHolder = document.querySelector(gameCardsHolder);
     this.navLinksHolder = document.querySelectorAll(navLinksHolder);
     this.detailsHolderSelector = detailsHolderSelector;
     // object of the details class so i can use displayDetails function and take the id of the game details
     this.detailsInstance = new GameDetails(detailsHolderSelector);
+
+    this.loadingHolder = document.querySelector(loadingHolder);
 
     this.apiURL =
       "https://free-to-play-games-database.p.rapidapi.com/api/games?category=";
@@ -30,6 +37,7 @@ export class Ui {
   // function that fetch the data from the api and take a string that string will be the category that user want
   async getData(category) {
     try {
+      this.showLoading();
       const res = await fetch(`${this.apiURL}${category}`, {
         method: "GET",
         headers: {
@@ -37,8 +45,11 @@ export class Ui {
           "x-rapidapi-host": this.apiHostHolder,
         },
       });
+
       const data = await res.json();
       this.displayGamesData(data);
+
+      this.hideLoading();
     } catch (err) {
       console.error("Error fetching data:", err);
     }
@@ -88,5 +99,13 @@ export class Ui {
     return words.length > wordLimit
       ? words.slice(0, wordLimit).join(" ") + "..."
       : description;
+  }
+
+  showLoading() {
+    this.loadingHolder.classList.remove("d-none");
+  }
+
+  hideLoading() {
+    this.loadingHolder.classList.add("d-none");
   }
 }
